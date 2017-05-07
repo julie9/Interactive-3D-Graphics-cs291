@@ -40,25 +40,30 @@ function drawDrinkingBird() {
 	headMaterial.color.g = 1/255;
 	headMaterial.color.b = 5/255;
 
-	var hatMaterial = new THREE.MeshPhongMaterial( { shininess: 100 } );
+	var hatMaterial = new THREE.MeshPhongMaterial( { shininess: 300 } );
 	hatMaterial.color.r = 24/255;
 	hatMaterial.color.g = 38/255;
 	hatMaterial.color.b = 77/255;
-	hatMaterial.specular.setRGB( 0.5, 0.5, 0.5 );
+	var ks = 0.7;
+	hatMaterial.specular.setRGB( ks, ks, ks );
 
-	var bodyMaterial = new THREE.MeshPhongMaterial( { shininess: 100 } );
+	var bodyMaterial = new THREE.MeshPhongMaterial( { shininess: 300 } );
 	bodyMaterial.color.setRGB( 31/255, 86/255, 169/255 );
-	bodyMaterial.specular.setRGB( 0.5, 0.5, 0.5 );
+	bodyMaterial.specular.setRGB( ks, ks, ks );
 
 	// MODIFY THIS TO BE TRANSPARENT:
-	var glassMaterial = new THREE.MeshPhongMaterial( { color: 0xFFFFFF, shininess: 100 } );
+	var glassMaterial = new THREE.MeshPhongMaterial( { color: 0x0, 
+														specular: 0xBBBBBB,
+    													shininess: 500, 
+    													opacity: 0.3, 
+    													transparent: true } );
 
-	var legMaterial = new THREE.MeshPhongMaterial( { shininess: 4 } );
+	var legMaterial = new THREE.MeshPhongMaterial( { shininess: 1000 } );
 	legMaterial.color.setHex( 0xAdA79b );
-	legMaterial.specular.setRGB( 0.5, 0.5, 0.5 );
+	legMaterial.specular.setRGB( ks, ks, ks );
 
-	var footMaterial = new THREE.MeshPhongMaterial( { color: 0x960f0b, shininess: 30 } );
-	footMaterial.specular.setRGB( 0.5, 0.5, 0.5 );
+	var footMaterial = new THREE.MeshPhongMaterial( { color: 0x960f0b, shininess: 3000 } );
+	footMaterial.specular.setRGB( ks, ks, ks );
 
 	var sphere, cylinder, cube;
 
