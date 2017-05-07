@@ -24,7 +24,7 @@ function init() {
 
 	// LIGHTS
 	//ambientLight = new THREE.AmbientLight( 0xFFFFFF ); //0xFFFFFF : white
-	ambientLight = new THREE.AmbientLight( 0x222222 );
+	ambientLight = new THREE.AmbientLight( 0xAAAAAA );
 
 	light = new THREE.DirectionalLight( 0xFFFFFF, 0.7 );
 	light.position.set( -800, 900, 300 );
@@ -45,10 +45,12 @@ function init() {
 
 function createBall() {
 	// Do not change the color itself, change the material and use the ambient and diffuse components.
-	//var material = new THREE.MeshBasicMaterial( { color: 0x80FC66, shading: THREE.FlatShading } );
 	var material = new THREE.MeshLambertMaterial( { color: 0x80FC66, shading: THREE.FlatShading } );
-	var ka = 0.4;
-	//material.ambient.setRGB(material.color.r ka, )
+	//var material = new THREE.MeshLambertMaterial( { color: 0x80FC66 } ); // for smooth shading
+	var ka = 0.25;
+	material.ambient.setRGB(material.color.r*ka, material.color.g*ka, material.color.b*ka); 
+	// material.ambient : not used in recent 
+
 	var sphere = new THREE.Mesh( new THREE.SphereGeometry( 400, 64, 32 ), material );
 	return sphere;
 }
